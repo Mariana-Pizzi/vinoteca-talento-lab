@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ProductoCard from '../components/ProductoCard';
 
+const API = 'https://68f27fa0b36f9750deecd5f3.mockapi.io/vinos';
+
 function Productos() {
   const [vinos, setVinos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://64eb5a63219b3e2873c38c4e.mockapi.io/vinos')
+    fetch(API)
       .then(res => res.json())
       .then(data => {
         setVinos(data);
@@ -21,6 +23,7 @@ function Productos() {
 
   if (cargando) return <p style={{ textAlign: 'center' }}>Cargando vinos...</p>;
   if (error) return <p style={{ textAlign: 'center' }}>{error}</p>;
+  if (!vinos.length) return <p style={{ textAlign: 'center' }}>No hay vinos disponibles.</p>;
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
