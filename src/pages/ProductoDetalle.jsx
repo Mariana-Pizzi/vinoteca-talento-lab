@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { CarritoContext } from '../context/CarritoContext';
 
 const API = 'https://68f27fa0b36f9750deecd5f3.mockapi.io/vinos';
 
@@ -8,6 +9,7 @@ function ProductoDetalle() {
   const [vino, setVino] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const { agregarAlCarrito } = useContext(CarritoContext);
 
   useEffect(() => {
     fetch(`${API}/${id}`)
@@ -35,6 +37,7 @@ function ProductoDetalle() {
       {vino.imagen && <img src={vino.imagen} alt={vino.nombre} width="250" />}
       {vino.descripcion && <p style={{ maxWidth: 600, margin: '10px auto' }}>{vino.descripcion}</p>}
       {vino.precio != null && <p><strong>Precio:</strong> ${vino.precio}</p>}
+      <button onClick={() => agregarAlCarrito(vino)}>Agregar al carrito</button>
     </div>
   );
 }
