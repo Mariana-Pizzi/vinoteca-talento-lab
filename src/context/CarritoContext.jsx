@@ -4,6 +4,7 @@ export const CarritoContext = createContext();
 
 export function CarritoProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
+  const [mensaje, setMensaje] = useState(null);
 
   const agregarAlCarrito = (producto) => {
     setCarrito((prev) => {
@@ -15,6 +16,9 @@ export function CarritoProvider({ children }) {
       }
       return [...prev, { ...producto, cantidad: 1 }];
     });
+
+    setMensaje(`${producto.nombre} agregado al carrito ✅`);
+    setTimeout(() => setMensaje(null), 2000);
   };
 
   const vaciarCarrito = () => setCarrito([]);
@@ -24,7 +28,7 @@ export function CarritoProvider({ children }) {
   };
 
   return (
-    <CarritoContext.Provider value={{ carrito, agregarAlCarrito, vaciarCarrito, eliminarDelCarrito }}>
+    <CarritoContext.Provider value={{ carrito, agregarAlCarrito, vaciarCarrito, eliminarDelCarrito, mensaje }}>
       {children}
     </CarritoContext.Provider>
   );

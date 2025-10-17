@@ -8,6 +8,7 @@ import Carrito from './components/Carrito';
 import Admin from './pages/Admin';
 import Login from './pages/Login';
 import RutaProtegida from './components/RutaProtegida';
+import MensajeCarrito from './MensajeCarrito';
 
 function App() {
   const [logueado, setLogueado] = useState(false);
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <MensajeCarrito /> 
       <div style={{ textAlign: 'center', margin: '10px' }}>
         <button onClick={() => setLogueado(!logueado)}>
           {logueado ? 'Cerrar sesión' : 'Iniciar sesión'}
