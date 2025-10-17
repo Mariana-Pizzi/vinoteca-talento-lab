@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Productos from './pages/Productos';
+import ProductoDetalle from './pages/ProductoDetalle';
+import Carrito from './components/Carrito';
+import Admin from './pages/Admin';
+import Login from './pages/Login';
+import RutaProtegida from './components/RutaProtegida';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [logueado, setLogueado] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <Router>
+      <Navbar />
+      <div style={{ textAlign: 'center', margin: '10px' }}>
+        <button onClick={() => setLogueado(!logueado)}>
+          {logueado ? 'Cerrar sesión' : 'Iniciar sesión'}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<Productos />} />
+        <Route path="/productos/:id" element={<ProductoDetalle />} />
+        <Route path="/carrito" element={<Carrito />} />
+        <Route
+          path="/admin"
+          element={
+            <RutaProtegida isAuth={logueado}>
+              <Admin />
+            </RutaProtegida>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
