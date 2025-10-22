@@ -14,3 +14,98 @@ button {
 button:hover {
   background-color: #a11;
 }
+.hero {
+  position: relative;
+  min-height: 58vh;
+  background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c76cd?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+.hero-overlay {
+  background: rgba(0,0,0,0.45);
+  padding: 28px 32px;
+  border-radius: 14px;
+  color: #fff;
+  text-align: center;
+  max-width: 860px;
+}
+.btn-hero {
+  display: inline-block;
+  margin-top: 12px;
+  background: #7b1f1f;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-hero:hover { background: #8f2323; }
+
+.section { padding: 32px 16px; }
+.section-title {
+  text-align: center;
+  margin-bottom: 18px;
+  color: #7b1f1f;
+}
+.center { text-align: center; }
+
+.grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.card.cat { text-align: center; }
+.cat-emoji { font-size: 36px; }
+
+.btn-secondary {
+  display: inline-block;
+  background: #ffffff;
+  color: #7b1f1f;
+  border: 2px solid #7b1f1f;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.btn-secondary:hover { background: #7b1f1f; color: #fff; }
+
+.promo {
+  background: linear-gradient(90deg, #7b1f1f 0%, #9c2a2a 100%);
+  color: #fff;
+  padding: 36px 18px;
+}
+.promo-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+  text-align: center;
+}
+
+.contact-strip {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 16px;
+  background: #faf6f3;
+  border-top: 1px solid #eee;
+}
+.contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 720px) {
+  .contact-strip { flex-direction: column; text-align: center; }
+}

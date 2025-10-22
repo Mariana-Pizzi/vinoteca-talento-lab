@@ -1,8 +1,17 @@
+import Hero from '../components/Hero';
+import CategoryGrid from '../components/CategoryGrid';
+import FeaturedProducts from '../components/FeaturedProducts';
+import Resenas from '../components/Resenas';
+import Contacto from '../components/Contacto';
+
 export default function Home() {
   return (
-    <div style={{ textAlign: 'center', padding: '30px' }}>
-      <h1>Bienvenido a Vinoteca TalentoLab 🍷</h1>
-      <p>Descubrí los mejores vinos seleccionados para vos.</p>
-    </div>
+    <>
+      <Hero />
+      <CategoryGrid />
+      <FeaturedProducts />
+      <Resenas />
+      <Contacto />
+    </>
   );
 }
